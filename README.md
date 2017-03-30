@@ -4,17 +4,28 @@ This is a WildFly Swarm microservice that represents inventory in a retail store
 
 # Running on OpenShift
 
-1. Use the Fabric8 Maven Plugin to launch the S2I process on the OpenShift Online machine & start the pod.
+You'll need to have access to an OpenShift cluster and the `oc` command line interface.
 
-    ```
-    mvn clean fabric8:deploy -Popenshift  -DskipTests
-    ```
+1. Login to OpenShift and create a new project
 
-This will build and deploy the microservice along with a Postgres database. To test the service using curl:
+```
+oc login
+oc new-project demo
+```
 
-   ```
-   curl http://inventory-<project>.<domain>/api/inventory/329299
-   ```
+2. Use the Fabric8 Maven Plugin to launch the S2I process on the OpenShift Online machine & start the pod.
+
+```
+mvn clean fabric8:deploy -Popenshift  -DskipTests
+```
+
+This will build and deploy the microservice along with a Postgres database.
+
+3. To test the service using curl:
+
+```
+curl http://inventory-<project>.<domain>/api/inventory/329299
+```
 For example:
 
 ```
