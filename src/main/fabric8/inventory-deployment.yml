@@ -23,7 +23,7 @@ spec:
         - name: JAVA_APP_DIR
           value: /deployments
         - name: JAVA_OPTIONS
-          value: -Dswarm.datasources.data-sources.InventoryDS.connection-url=jdbc:postgresql://$(INVENTORY_DATABASE_SERVICE_HOST):$(INVENTORY_DATABASE_SERVICE_PORT)/inventory
+          value: -Dswarm.datasources.data-sources.InventoryDS.connection-url=jdbc:postgresql://inventory-database:5432/inventory
         name: inventory
         image: inventory:latest
         imagePullPolicy: IfNotPresent
