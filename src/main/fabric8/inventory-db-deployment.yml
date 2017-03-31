@@ -37,9 +37,6 @@ spec:
       labels:
         app: inventory-database
         deploymentconfig: inventory-database
-      annotations:
-        openshift.io/container.inventory-database.image.entrypoint: '["container-entrypoint","run-postgresql"]'
-        openshift.io/generated-by: OpenShiftNewApp
     spec:
       volumes:
         - name: inventory-database-volume-1
