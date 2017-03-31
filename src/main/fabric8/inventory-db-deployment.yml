@@ -19,7 +19,7 @@ spec:
         from:
           kind: ImageStreamTag
           namespace: openshift
-          name: 'postgresql:9.2'
+          name: 'postgresql:9.5'
   replicas: 1
   test: false
   selector:
@@ -36,7 +36,8 @@ spec:
           emptyDir: {}
       containers:
         - name: inventory-database
-          image: openshift/postgresql-92-centos7
+          image: postgresql
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5432
               protocol: TCP
@@ -47,11 +48,6 @@ spec:
               value: password
             - name: POSTGRESQL_USER
               value: swarm
-          volumeMounts:
-            - name: inventory-database-volume-1
-              mountPath: /var/lib/pgsql/data
-          terminationMessagePath: /dev/termination-log
-          imagePullPolicy: IfNotPresent
           livenessProbe:
             initialDelaySeconds: 30
             tcpSocket:
