@@ -17,16 +17,16 @@ import com.redhat.coolstore.service.InventoryService;
 @Path("/inventory")
 public class InventoryEndpoint implements Serializable {
 
-	private static final long serialVersionUID = -7227732980791688773L;
+    private static final long serialVersionUID = -7227732980791688773L;
 
-	@Inject
-	private InventoryService inventoryService;
+    @Inject
+    private InventoryService inventoryService;
 
-	@GET
-	@Path("{itemId}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Inventory getAvailability(@PathParam("itemId") String itemId) {
-		return inventoryService.getInventory(itemId);
-	}
+    @GET
+    @Path("{itemId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Inventory getAvailability(@PathParam("itemId") String itemId) {
+        return inventoryService.getInventory(itemId);
+    }
 
 }
